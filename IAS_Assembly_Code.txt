@@ -46,7 +46,7 @@
 //      -> Terminate the assembly program
 
 //-------------------------------------------------
-// Clean view without comments:
+// Clean code without comments:
 
 DISC M(0),M(1),M(2)
 STOR M(4)
