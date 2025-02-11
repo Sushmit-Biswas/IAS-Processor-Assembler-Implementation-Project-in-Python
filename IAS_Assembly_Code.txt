@@ -1,0 +1,65 @@
+// IAS Assembly Language Program
+//-------------------------------------------------
+// Memory Layout:
+        
+        M = { a, b, c, a_2, dis, 4, 2, root_d, x1, x2 }
+
+//-------------------------------------------------
+// Instructions with Addresses:
+// 496: DISC M(0), M(1), M(2)    
+//      -> Calculate discriminant (using a, b, c)
+//         (Operands represented by 4 bits)
+// 497: STOR M(4)              
+//      -> Store the discriminant in memory location M(4)
+// 498: JUMP+ M(500,0:19)       
+//      -> Conditional jump to address in M(500) (bit range 0:19)
+// 499: HALT                    
+//      -> Stop the program execution
+// 500: SQRT M(4) STOR M(7)      
+//      -> Compute sqrt of M(4) and store the result in M(7)
+// 501: LOAD MQ, M(0)            
+//      -> Load M(0) into the multiplier quotient (MQ)
+// 502: MUL M(6) LOAD MQ         
+//      -> Multiply M(6) with the value in MQ,
+//         then load the result back into MQ
+// 503: STOR M(3)              
+//      -> Store the result into M(3)
+
+// x1 Calculation:
+// 504: LOAD -M(1) ADD M(7)      
+//      -> Load negative of M(1) and add the value in M(7)
+// 505: DIV M(3) LOAD MQ         
+//      -> Divide the result by M(3) and load quotient into MQ
+// 506: STOR M(8)              
+//      -> Store the first root in M(8)
+
+// x2 Calculation:
+// 507: LOAD -M(1) SUB M(7)      
+//      -> Load negative of M(1) and subtract the value in M(7)
+// 508: DIV M(3) LOAD MQ         
+//      -> Divide the result by M(3) and load quotient into MQ
+// 509: STOR M(9)              
+//      -> Store the second root in M(9)
+
+// End of Program:
+// 510: EXIT                   
+//      -> Terminate the assembly program
+
+//-------------------------------------------------
+// Clean view without comments:
+
+DISC M(0),M(1),M(2)
+STOR M(4)
+JUMP+ M(500,0:19)
+HALT
+SQRT M(4) STOR M(7)
+LOAD MQ,M(0)
+MUL M(6) LOAD MQ
+STOR M(3)
+LOAD -M(1) ADD M(7)
+DIV M(3) LOAD MQ
+STOR M(8)
+LOAD -M(1) SUB M(7)
+DIV M(3) LOAD MQ
+STOR M(9)
+EXIT
