@@ -11,6 +11,7 @@ OPCODES = {
     "LOAD MQ,M(X)": "00001001",
     "LOAD MQ": "00001010",
     "DISC M(X),M(X),M(X)": "01010101",
+    "JUMP M(X,0:19)": "00001101",
     "JUMP+ M(X,0:19)": "00001111",
     "SQRT M(X)": "00110011",
     "STOR M(X)": "00100001",
@@ -56,6 +57,13 @@ def mach_lang_prog(mach_lang):
             # For JUMP+ commands (example: JUMP+ M(500,0:19))
             if ins_list[0] == "JUMP+":
                 op = opcode("JUMP+ M(X,0:19)")
+                # Extract operand between '(' and ',' e.g. from M(500,0:19)
+                operand = ins_list[1][ ins_list[1].find('(')+1 : ins_list[1].find(',') ]
+                binary = convert_binary(operand, op)
+                address = op + binary + zeroes
+            # For JUMP commands (example: JUMP M(500,0:19))
+            elif ins_list[0] == "JUMP":
+                op = opcode("JUMP M(X,0:19)")
                 # Extract operand between '(' and ',' e.g. from M(500,0:19)
                 operand = ins_list[1][ ins_list[1].find('(')+1 : ins_list[1].find(',') ]
                 binary = convert_binary(operand, op)

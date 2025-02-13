@@ -135,6 +135,9 @@ def my_operation(op, address):
         # Stores the current value of the accumulator into the memory at the given address.
         MBR = AC
         M[int(address, 2)] = MBR
+    elif op == "00001101":  # JUMP M(X,0:19)
+        # Take next instruction from left half of M(X)
+        PC = int(address, 2) - 1
     elif op == "00001111":  # JUMP+ M[x,0:19]
         # Jumps to a different memory address if the accumulator is non-negative.
         if AC >= 0:
