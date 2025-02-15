@@ -92,6 +92,23 @@ a: 1
 b: -5
 c: 6
 
+Please type the IAS commands:
+DISC M(0),M(1),M(2)
+STOR M(4)
+JUMP+ M(500,0:19)
+HALT
+SQRT M(4) STOR M(7)
+LOAD MQ,M(0)
+MUL M(6) LOAD MQ
+STOR M(3)
+LOAD -M(1) ADD M(7)
+DIV M(3) LOAD MQ
+STOR M(8)
+LOAD -M(1) SUB M(7)
+DIV M(3) LOAD MQ
+STOR M(9)
+EXIT
+
 Results:
 The roots are 3.0 and 2.0
 ```
