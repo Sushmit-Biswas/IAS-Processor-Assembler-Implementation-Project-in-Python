@@ -33,8 +33,8 @@ This project implements a software simulation of the IAS architecture, enhanced 
 
 ### Floating-Point System
 ```python
-[S|EEEEEEEE|MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM]
- 39  38-31   30-0
+[ S | EEEEEEEE | MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM ]
+  39    38-31                  30-0
 ```
 - Sign bit (Position 39)
 - Exponent field (Positions 31-38)
