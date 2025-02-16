@@ -15,7 +15,7 @@ This project implements a software simulation of the IAS architecture, enhanced 
 
 ### Custom Instructions
 - **DISC** (Discriminant): Computes `b² - 4ac`
-- **SQRT** (Square Root): Calculates square root using hardware acceleration
+- **SQRT** (Square Root): Calculates square root using software implementation
 
 ### Memory Architecture
 - 40-bit word length
@@ -49,19 +49,19 @@ This project implements a software simulation of the IAS architecture, enhanced 
 ### Memory Layout
 The IAS machine utilizes 10 memory locations (M[0] to M[9]) carefully organized for quadratic equation solving:
 
-| Location | Symbol  | Purpose                                    | Formula/Value          |
+| Location | Symbol  | Purpose                                    | Formula/Value         |
 |----------|---------|--------------------------------------------|-----------------------|
 | M[0]     | a       | First coefficient                          | From x² term          |
 | M[1]     | b       | Second coefficient                         | From x term           |
 | M[2]     | c       | Third coefficient                          | Constant term         |
-| M[3]     | a_2     | Denominator for root calculation          | 2 × a                 |
-| M[4]     | dis     | Discriminant                              | b² - 4ac              |
-| M[5]     | 4       | Constant for discriminant calculation     | Fixed value: 4        |
-| M[6]     | 2       | Constant for denominator calculation      | Fixed value: 2        |
-| M[7]     | root_d  | Square root of discriminant               | √(b² - 4ac)          |
-| M[8]     | x1      | First root                                | (-b + √dis)/(2a)     |
-| M[9]     | x2      | Second root                               | (-b - √dis)/(2a)     |
-
+| M[3]     | a_2     | Denominator for root calculation           | 2 × a                 |
+| M[4]     | dis     | Discriminant                               | b² - 4ac              |
+| M[5]     | 4       | Constant for discriminant calculation      | Fixed value: 4        |
+| M[6]     | 2       | Constant for denominator calculation       | Fixed value: 2        |
+| M[7]     | root_d  | Square root of discriminant                | √(b² - 4ac)           |
+| M[8]     | x1      | First root                                 | (-b + √dis)/(2a)      |
+| M[9]     | x2      | Second root                                | (-b - √dis)/(2a)      |
+ 
 ```mermaid
 graph TD
     A[Input: a,b,c] --> B[Calculate 2a]
@@ -75,13 +75,13 @@ graph TD
 ## 🚀 Running the Project
 
 1. Ensure Python 3.x is installed
-2. Install required dependencies:
+2. Install required dependencies using:
    ```bash
    pip install colorama rich
    ```
-3. Run the processor:
+3. Run the processor on either Windows or Linux using:
    ```bash
-   python BT2024038_IAS_Processor.py
+   python3 BT2024038_IAS_Processor.py
    ```
 
 ## 📝 Usage Example
